@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check LocalStorage</title>
+</head>
+<body>
+    <h1>LocalStorage Data</h1>
+    <pre id="localStorageData"></pre>
+
+    <script>
+        // 检查localStorage中的elderlyList
+        const elderlyList = localStorage.getItem('elderlyList');
+        const elderlyId = localStorage.getItem('elderly_id');
+        const familyLogin = localStorage.getItem('family_login');
+        const adminLogin = localStorage.getItem('admin_login');
+        const adminToken = localStorage.getItem('admin_token');
+        const familyToken = localStorage.getItem('family_token');
+
+        const data = {
+            elderlyList: elderlyList ? JSON.parse(elderlyList) : null,
+            elderly_id: elderlyId,
+            family_login: familyLogin,
+            admin_login: adminLogin,
+            admin_token: adminToken,
+            family_token: familyToken
+        };
+
+        document.getElementById('localStorageData').textContent = JSON.stringify(data, null, 2);
+
+        console.log('LocalStorage Data:', data);
+    </script>
+</body>
+</html>

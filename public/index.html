@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="description" content="老人健康家庭监测系统 - 实时关注老人健康状况，让关爱更及时">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>老人健康监测系统</title>
+  </head>
+  <body>
+    <noscript>
+      <strong>很抱歉，老人健康监测系统需要启用 JavaScript 才能正常运行。请启用 JavaScript 后继续。</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- SVG Icons Sprite -->
+    <script>
+      fetch('<%= BASE_URL %>icons.svg')
+        .then(response => response.text())
+        .then(data => {
+          const div = document.createElement('div');
+          div.style.display = 'none';
+          div.innerHTML = data;
+          document.body.insertBefore(div, document.body.firstChild);
+        });
+    </script>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
