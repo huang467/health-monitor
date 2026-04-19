@@ -5,6 +5,31 @@
 // 2. 对接真实后端时，取消注释真实接口调用，删除模拟代码
 // 3. 确保后端接口返回格式符合约定：{ code: 200, data: {...}, msg: "成功" }
 
+// 假设你的 Python 服务跑在本地 8000 端口
+const AI_BASE_URL = 'https://yijing-ai-backend.onrender.com';
+
+/**
+ * 将实时生理数据发送给 MIRMAD 算法进行高维异常检测
+ * @param {Object} data - { elderlyId, bloodOxygen, heartRate, bloodPressureSys }
+ */
+export const checkHealthAnomaly = async (data) => {
+  try {
+    const response = await fetch(`${AI_BASE_URL}/api/ai/predict`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('AI 算法检测服务连接失败:', error);
+    return null;
+  }
+};
+
+// ============================================
+// 以下是原有代码
+// ============================================
+
 // eslint-disable-next-line no-unused-vars
 import request from '../utils/request'; // request 将在对接真实接口时使用
 
